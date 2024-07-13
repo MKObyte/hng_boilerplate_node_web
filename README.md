@@ -220,7 +220,8 @@ The database design is structured to support the API functionalities efficiently
 - `expires_at`: timestamp
 
 ## ERD Diagram
-![ERD Diagram](link_to_erd_diagram)
+![ERD Diagram](https://github.com/MKObyte/hng_boilerplate_node_web/blob/Tulbadex-team/ER%20diagram%20new%20print.png)
+
 
 ## Submission
 - **Fork** the Node.js boilerplate repository from [HNGProjects](https://github.com/hngprojects/hng_boilerplate_node_web).
