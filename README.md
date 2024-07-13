@@ -5,6 +5,8 @@
 - [iamhammyboi19](https://github.com/iamhammyboi19)
 - [tulbadex](https://github.com/tulbadex)
 - [MKObyte](https://github.com/MKObyte)
+- [Ibrahim4Grace](https://github.com/Ibrahim4Grace)
+
 
 ## Introduction
 This project is part of the HNG Stage 3 Backend Task. Our team has chosen to work with the Node.js boilerplate repository. The objective of this project is to collaboratively design a comprehensive API using OpenAPI and create a robust and well-structured database blueprint/design.
