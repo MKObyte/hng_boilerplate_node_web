@@ -1,0 +1,224 @@
+openapi: 3.1.0
+info:
+  title: HNG Boilerplate API
+  version: 1.0.0
+api:
+  users:
+    - User Registration:
+        method: POST
+        path: /api/users/register
+        requestBody:
+          username: string
+          email: string
+          password: string
+          first_name: string
+          last_name: string
+        response:
+          id: int
+          username: string
+          email: string
+          first_name: string
+          last_name: string
+          created_at: timestamp
+
+    - User Login:
+        method: POST
+        path: /api/users/login
+        requestBody:
+          username_or_email: string
+          password: string
+        response:
+          token: string
+
+    - Get User Profile:
+        method: GET
+        path: /api/users/{userId}
+        response:
+          id: int
+          username: string
+          email: string
+          first_name: string
+          last_name: string
+          created_at: timestamp
+          profile_picture: string
+          bio: string
+
+    - Update User Profile:
+        method: PUT
+        path: /api/users/{userId}
+        requestBody:
+          first_name: string
+          last_name: string
+          profile_picture: string
+          bio: string
+        response:
+          id: int
+          username: string
+          email: string
+          first_name: string
+          last_name: string
+          profile_picture: string
+          bio: string
+
+  organizations:
+    - Create Organization:
+        method: POST
+        path: /api/organizations
+        requestBody:
+          name: string
+        response:
+          id: int
+          name: string
+          created_at: timestamp
+
+    - Get Organization:
+        method: GET
+        path: /api/organizations/{organizationId}
+        response:
+          id: int
+          name: string
+          created_at: timestamp
+          users:
+            - id: int
+              username: string
+              role: string
+
+    - Add User to Organization:
+        method: POST
+        path: /api/organizations/{organizationId}/users
+        requestBody:
+          user_id: int
+          role: string
+        response:
+          organization_id: int
+          user_id: int
+          role: string
+
+  messaging:
+    - Send Email:
+        method: POST
+        path: /api/emails/send
+        requestBody:
+          recipient: string
+          subject: string
+          body: string
+        response:
+          id: int
+          recipient: string
+          subject: string
+          body: string
+          sent_at: timestamp
+
+  payments:
+    - Create Payment:
+        method: POST
+        path: /api/payments
+        requestBody:
+          user_id: int
+          organization_id: int
+          amount: decimal
+          currency: string
+          provider: string
+        response:
+          id: int
+          user_id: int
+          organization_id: int
+          amount: decimal
+          currency: string
+          status: string
+          created_at: timestamp
+
+    - Get Payment:
+        method: GET
+        path: /api/payments/{paymentId}
+        response:
+          id: int
+          user_id: int
+          organization_id: int
+          amount: decimal
+          currency: string
+          status: string
+          created_at: timestamp
+
+  settings:
+    - Get User Settings:
+        method: GET
+        path: /api/settings/{userId}
+        response:
+          settings:
+            - settings_key: string
+              settings_value: string
+
+    - Update User Settings:
+        method: PUT
+        path: /api/settings/{userId}
+        requestBody:
+          settings:
+            - settings_key: string
+              settings_value: string
+        response:
+          settings:
+            - settings_key: string
+              settings_value: string
+
+  notifications:
+    - Get Notifications:
+        method: GET
+        path: /api/notifications/{userId}
+        response:
+          notifications:
+            - id: int
+              message: string
+              is_read: boolean
+              created_at: timestamp
+
+    - Mark Notification as Read:
+        method: PUT
+        path: /api/notifications/{notificationId}/read
+        response:
+          id: int
+          message: string
+          is_read: boolean
+          created_at: timestamp
+
+  activityLog:
+    - Get User Activity Log:
+        method: GET
+        path: /api/activity-log/{userId}
+        response:
+          activities:
+            - id: int
+              action: string
+              timestamp: timestamp
+
+  miscellaneous:
+    - Add to Waitlist:
+        method: POST
+        path: /api/waitlist
+        requestBody:
+          email: string
+        response:
+          id: int
+          email: string
+          joined_at: timestamp
+
+    - Create Invite:
+        method: POST
+        path: /api/invites
+        requestBody:
+          user_id: int
+        response:
+          id: int
+          user_id: int
+          invite_code: string
+          created_at: timestamp
+          expires_at: timestamp
+
+    - Get User Random Data:
+        method: GET
+        path: /api/random-data/{userId}
+        response:
+          data:
+            - id: int
+              data: json
+              created_at: timestamp
